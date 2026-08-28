@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Chat Online</title>
+
+    <link rel="stylesheet" href="/web/styles/style.css">
+</head>
+
+<body>
+
+    <div class="container">
+
+        <h1>Chat Online</h1>
+
+        <div class="status" id="status">
+            ● Desconectado
+        </div>
+
+        <hr>
+
+        <div class="login" id="login">
+
+            <label>Digite seu nome:</label>
+
+            <input
+                type="text"
+                id="username"
+                placeholder="Seu nome"
+            >
+
+            <button id="enter">
+                Entrar
+            </button>
+
+        </div>
+
+        <div class="chat" id="chat">
+        </div>
+
+        <hr>
+
+        <div class="input">
+
+            <input
+                type="text"
+                id="message"
+                placeholder="Digite sua mensagem..."
+                disabled
+            >
+
+            <button id="send" disabled>
+                Enviar
+            </button>
+
+        </div>
+
+    </div>
+
+    <script src="/web/script.js"></script>
+
+</body>
+</html>

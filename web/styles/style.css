@@ -1,0 +1,97 @@
+body {
+    margin: 0;
+    cursor: url(/web/styles/cursors/Cursor_1.cur) 0 0, auto;
+    background-image: url(/web/styles/imagens/starbg2.gif);
+    color: white;
+
+    font-family: Arial, sans-serif;
+}
+
+.container {
+    width: 600px;
+
+    margin: 50px auto;
+
+    background-color: #eeeeee;
+    color: black;
+
+    padding: 15px;
+
+    border: 3px solid #5555aa;
+}
+
+h1 {
+    margin: 0;
+
+    color: #333399;
+
+    font-size: 25px;
+}
+
+.status {
+    margin-top: 5px;
+
+    color: green;
+
+    font-size: 13px;
+}
+
+hr {
+    border: 0;
+
+    border-top: 1px solid #999999;
+}
+
+.chat {
+    height: 350px;
+
+    padding: 10px;
+
+    background-color: white;
+
+    border: 2px inset #cccccc;
+
+    overflow-y: auto;
+}
+
+.chat p {
+    margin: 8px 0;
+}
+
+.chat b {
+    color: #333399;
+}
+
+.chat span {
+    color: #888888;
+
+    font-size: 11px;
+}
+
+.input {
+    display: flex;
+
+    gap: 5px;
+}
+
+.input input {
+    flex: 1;
+
+    padding: 6px;
+
+    border: 2px inset #cccccc;
+}
+
+.input button {
+    padding: 5px 15px;
+
+    border: 2px outset #cccccc;
+
+    background-color: #eeeeee;
+
+    cursor: pointer;
+}
+
+.input button:active {
+    border-style: inset;
+}
