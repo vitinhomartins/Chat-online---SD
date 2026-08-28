@@ -30,7 +30,7 @@ function entrar() {
         return;
     }
 
-    socket = new WebSocket("ws://localhost:8765");
+    socket = new WebSocket("ws://10.0.0.126:8765");
 
 
     socket.onopen = function() {
