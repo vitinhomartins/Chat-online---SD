@@ -1,7 +1,7 @@
 import socket
 
 HOST = "127.0.0.1"
-PORT = 5000
+PORT = 6000
 
 
 def receive_messages(client):
@@ -29,7 +29,7 @@ def start_client():
     name = input("> ")
     client.send(name.encode())
 
-    # Thread responsável por receber mensagens
+    # Thread responsável pelas mensagens
     import threading
 
     thread = threading.Thread(

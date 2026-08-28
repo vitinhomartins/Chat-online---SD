@@ -5,20 +5,15 @@ import websockets
 from datetime import datetime
 
 
-# ==========================================
 # CONFIGURAÇÕES
-# ==========================================
 
 TCP_HOST = "0.0.0.0"
-TCP_PORT = 5000
+TCP_PORT = 6000
 
 WS_HOST = "0.0.0.0"
 WS_PORT = 8765
 
-
-# ==========================================
 # CLIENTES CONECTADOS
-# ==========================================
 
 tcp_clients = {}
 ws_clients = set()
@@ -30,18 +25,12 @@ lock = threading.Lock()
 websocket_loop = None
 
 
-# ==========================================
 # HORÁRIO DO SERVIDOR
-# ==========================================
 
 def get_time():
     return datetime.now().strftime("%H:%M:%S")
 
-
-# ==========================================
 # BROADCAST
-# ==========================================
-
 def broadcast(message):
 
     # ------------------------------
@@ -62,10 +51,8 @@ def broadcast(message):
 
                 pass
 
-
-    # ------------------------------
     # Clientes WebSocket
-    # ------------------------------
+    
 
     if websocket_loop:
 
@@ -88,21 +75,19 @@ async def websocket_broadcast(message):
             pass
 
 
-# ==========================================
 # SERVIDOR TCP
-# ==========================================
 
 def handle_tcp_client(client, address):
 
-    print(f"[TCP] Cliente conectado: {address}")
+    print(f"[~TCP~] Cliente {address} conectado!")
 
     name = None
 
     try:
 
-        # Pedir nome
+        # Envio da solicitação de nome para o usuário.
         client.sendall(
-            "Digite seu nome: ".encode("utf-8")
+            "Digite seu nickname: ".encode("utf-8")
         )
 
         name = client.recv(1024).decode("utf-8").strip()
@@ -121,7 +106,7 @@ def handle_tcp_client(client, address):
         print(f"[TCP] {name} entrou no chat.")
 
 
-        # Avisar todos
+        # Envia a mensagem pra todos.
         broadcast(
             f"[{get_time()}] {name} entrou no chat."
         )
@@ -240,9 +225,7 @@ def start_tcp_server():
         thread.start()
 
 
-# ==========================================
 # SERVIDOR WEBSOCKET
-# ==========================================
 
 async def handle_websocket(websocket):
 
@@ -310,7 +293,7 @@ async def handle_websocket(websocket):
 
     except Exception as error:
 
-        print(f"[WS] Erro: {error}")
+        print(f"[WebSocket] Erro: {error}")
 
 
     finally:
@@ -322,7 +305,7 @@ async def handle_websocket(websocket):
         if name:
 
             print(
-                f"[WS] {name} saiu do chat."
+                f"[WebSocket] {name} saiu do chat."
             )
 
 
@@ -349,9 +332,7 @@ async def start_websocket_server():
         await asyncio.Future()
 
 
-# ==========================================
 # LOOP DO WEBSOCKET
-# ==========================================
 
 def start_websocket_loop():
 
@@ -372,10 +353,7 @@ def start_websocket_loop():
         start_websocket_server()
     )
 
-
-# ==========================================
 # INICIAR SERVIDOR
-# ==========================================
 
 if __name__ == "__main__":
 
